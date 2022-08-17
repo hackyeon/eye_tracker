@@ -9,9 +9,7 @@ import android.util.Log
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.video.Quality
-import androidx.camera.video.Recorder
-import androidx.camera.video.VideoCapture
+import androidx.camera.video.*
 import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
@@ -21,42 +19,34 @@ import com.hackyeon.eye_tracker.util.getNameString
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
-
-    private var PERMISSIONS_REQUIRED = arrayOf(
-        Manifest.permission.CAMERA,
-        Manifest.permission.RECORD_AUDIO)
+class MainViewModel: ViewModel() {
 
 
-    init {
-
-//        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-//            val permissionList = PERMISSIONS_REQUIRED.toMutableList()
-//            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//            PERMISSIONS_REQUIRED = permissionList.toTypedArray()
-//        }
-//        Log.d("aabb", "application: $application")
-//
-//
-//        val t = PERMISSIONS_REQUIRED.all {
-//            ContextCompat.checkSelfPermission(application.applicationContext, it) == PackageManager.PERMISSION_GRANTED
-//        }
 
 
-    }
 
-
-    /**
-     * for camera
-     */
-    var enumerationDeferred: Deferred<Unit>? = null
+    //////////////////////////////////////////////
+    //////////////// for camera //////////////////
+    //////////////////////////////////////////////
     val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
-    var cameraQuality: List<Quality>? = null
+    var qualityList: List<Quality> = emptyList()
 
     var videoCapture: VideoCapture<Recorder>? = null
 
-    fun initQuality() {
-    }
+    var currentRecording: Recording? = null
 
+    var recordingState: VideoRecordEvent? = null
+
+    /**
+     * 녹화를 하기위한 권한을 가져온다
+     * @return Array<String>
+     */
+    fun getPermissionRequired(): Array<String> {
+        val permissionList = mutableListOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+        return permissionList.toTypedArray()
+    }
 
 }
