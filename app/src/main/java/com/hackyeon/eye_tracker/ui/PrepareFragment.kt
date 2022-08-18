@@ -36,9 +36,6 @@ class PrepareFragment: Fragment() {
     private lateinit var binding: PrepareFragmentBinding
     private val viewModel: MainViewModel by activityViewModels()
 
-    private var enumerationDeferred: Deferred<Unit>? = null
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,14 +43,13 @@ class PrepareFragment: Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.prepare_fragment, container, false)
         return binding.root
-
-//        startCamera()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.nextButton.setOnClickListener {
+        // tood 나중에 뷰모델로
+        binding.btnStart.setOnClickListener {
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
                 PrepareFragmentDirections.actionPrepareFragmentToTestFragment()
             )

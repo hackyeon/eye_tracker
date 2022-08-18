@@ -12,7 +12,9 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.*
 import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
+import androidx.core.util.Consumer
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hackyeon.eye_tracker.util.getNameString
@@ -20,7 +22,14 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class MainViewModel: ViewModel() {
+    companion object {
+        const val DEFAULT_ANIMATION_SPEED = 1
+        const val DEFAULT_FLASH_TIME = 1
+    }
 
+
+    val animationSpeed = MutableLiveData<Int>()
+    val flashTime = MutableLiveData<Int>()
 
 
 
@@ -36,6 +45,19 @@ class MainViewModel: ViewModel() {
     var currentRecording: Recording? = null
 
     var recordingState: VideoRecordEvent? = null
+
+    val captureListener = Consumer<VideoRecordEvent> { event ->
+        if(event !is VideoRecordEvent.Status) recordingState = event
+
+    }
+
+    fun stopRecording() {
+        if(currentRecording == null || recordingState is VideoRecordEvent.Finalize) {
+            return
+        }
+        currentRecording?.stop()
+        currentRecording = null
+    }
 
     /**
      * 녹화를 하기위한 권한을 가져온다

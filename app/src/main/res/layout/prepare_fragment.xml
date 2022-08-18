@@ -66,6 +66,7 @@
         android:text="@string/info_head_position"
         />
 
+    <!-- todo 텍스트 확정되면 spannable로 변경해야함 -->
     <TextView
         app:layout_constraintHorizontal_chainStyle="packed"
         android:id="@+id/tv_info_first"
@@ -80,7 +81,6 @@
     <TextView
         android:gravity="center_vertical"
         android:id="@+id/tv_info_second"
-        android:bufferType="spannable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_baseline_add_24"
@@ -91,9 +91,8 @@
         />
 
 
-
-
     <Button
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,16 +100,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="START" />
 
-
-    <Button
-        android:visibility="gone"
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

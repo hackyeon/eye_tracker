@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         d("onPause")
     }
+    // todo navigation observer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
