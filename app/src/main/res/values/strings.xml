@@ -4,4 +4,18 @@
     <string name="input_file_name">파일명을 입력하세요</string>
     <string name="info_head_position">머리를 해당 영역에 넣어주세요</string>
 
+    
+    <!-- setting -->
+    <!-- camera -->
+    <string name="camera_mode">카메라 모드</string>
+    <string name="screen_mode">화면 모드</string>
+    <string name="front_camera">전면</string>
+    <string name="back_camera">후면</string>
+    <string name="landscape_mode">가로</string>
+    <string name="portrait_mode">세로</string>
+
+    <!-- animation -->
+    <string name="animation_speed">애니메이션 속도</string>
+    <string name="flash_time">점멸 간격</string>
+
 </resources>

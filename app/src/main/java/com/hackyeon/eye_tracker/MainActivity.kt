@@ -1,11 +1,8 @@
 package com.hackyeon.eye_tracker
 
 import android.content.pm.PackageManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -17,15 +14,13 @@ import androidx.camera.video.Recorder
 import androidx.camera.video.VideoCapture
 import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.hackyeon.eye_tracker.databinding.ActivityMainBinding
 import com.hackyeon.eye_tracker.util.HLog
-import com.hackyeon.eye_tracker.util.getAspectRatio
-import com.hackyeon.eye_tracker.util.setFullScreen
+import com.hackyeon.eye_tracker.util.extension.getAspectRatio
+import com.hackyeon.eye_tracker.util.extension.setFullScreen
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     private fun d(msg: Any?) {
-        HLog.d(msg)
+        HLog.d("## [${this.javaClass.simpleName}] ## $msg")
     }
 
     override fun onDestroy() {
@@ -50,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         d("onPause")
     }
-    // todo navigation observer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +53,25 @@ class MainActivity : AppCompatActivity() {
         d("onCreate")
         setFullScreen()
         checkPermission()
+
+        regObserve()
     }
+
+    private fun regObserve() {
+        viewModel.navigationCommand.observe(this) {
+            when(it) {
+                is NavigationCommand.ToDirection -> {
+                    try {
+                        binding.fragmentContainer.findNavController().navigate(it.directions)
+                    } catch (e: Exception) {
+                        d("error navigation $e")
+                    }
+                }
+            }
+        }
+
+    }
+
 
     //////////////////////////////////////////////
     //////////////// for camera //////////////////

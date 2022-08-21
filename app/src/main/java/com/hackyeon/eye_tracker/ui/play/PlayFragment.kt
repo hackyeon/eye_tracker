@@ -1,11 +1,8 @@
-package com.hackyeon.eye_tracker.ui
+package com.hackyeon.eye_tracker.ui.play
 
-import android.animation.Animator
-import android.animation.ValueAnimator
 import android.content.ContentValues
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +10,6 @@ import android.view.ViewTreeObserver
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.content.ContextCompat
-import androidx.core.util.Consumer
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -68,9 +64,7 @@ class PlayFragment: Fragment() {
                     viewModel.flashTime.value?: MainViewModel.DEFAULT_FLASH_TIME,
                 ) {
                     viewModel.stopRecording()
-                    Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
-                        PlayFragmentDirections.actionTestFragmentToUploadFragment()
-                    )
+                    viewModel.navigate(PlayFragmentDirections.actionPlayFragmentToUploadFragment())
                 }
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

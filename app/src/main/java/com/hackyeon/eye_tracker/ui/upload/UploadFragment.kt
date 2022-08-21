@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.ui
+package com.hackyeon.eye_tracker.ui.upload
 
 import android.os.Bundle
 import android.view.LayoutInflater

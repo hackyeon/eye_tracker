@@ -1,27 +1,27 @@
 package com.hackyeon.eye_tracker
 
 import android.Manifest
-import android.app.Application
-import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
-import android.util.Log
-import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
-import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.*
-import androidx.concurrent.futures.await
-import androidx.core.content.ContextCompat
 import androidx.core.util.Consumer
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.hackyeon.eye_tracker.util.getNameString
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
+import androidx.navigation.NavDirections
 
 class MainViewModel: ViewModel() {
+
+    //////////////////////////////////////////////
+    ////////////// for navigation ////////////////
+    //////////////////////////////////////////////
+    private val _navigationCommand: SingleLiveEvent<NavigationCommand> = SingleLiveEvent()
+    val navigationCommand: LiveData<NavigationCommand> = _navigationCommand
+    fun navigate(directions: NavDirections) {
+        _navigationCommand.postValue(NavigationCommand.ToDirection(directions))
+    }
+
+
     companion object {
         const val DEFAULT_ANIMATION_SPEED = 1
         const val DEFAULT_FLASH_TIME = 1

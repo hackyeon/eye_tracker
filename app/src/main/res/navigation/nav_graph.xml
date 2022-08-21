@@ -6,22 +6,29 @@
 
     <fragment
         android:id="@+id/prepareFragment"
-        android:name="com.hackyeon.eye_tracker.ui.PrepareFragment"
+        android:name="com.hackyeon.eye_tracker.ui.prepare.PrepareFragment"
         android:label="PrepareFragment" >
         <action
-            android:id="@+id/action_prepareFragment_to_testFragment"
-            app:destination="@id/testFragment" />
+            android:id="@+id/action_prepareFragment_to_playFragment"
+            app:destination="@id/playFragment" />
+        <action
+            android:id="@+id/action_prepareFragment_to_settingDialogFragment"
+            app:destination="@id/settingDialogFragment" />
     </fragment>
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.hackyeon.eye_tracker.ui.PlayFragment"
-        android:label="TestFragment" >
+        android:id="@+id/playFragment"
+        android:name="com.hackyeon.eye_tracker.ui.play.PlayFragment"
+        android:label="PlayFragment" >
         <action
-            android:id="@+id/action_testFragment_to_uploadFragment"
+            android:id="@+id/action_playFragment_to_uploadFragment"
             app:destination="@id/uploadFragment" />
     </fragment>
     <fragment
         android:id="@+id/uploadFragment"
-        android:name="com.hackyeon.eye_tracker.ui.UploadFragment"
+        android:name="com.hackyeon.eye_tracker.ui.upload.UploadFragment"
         android:label="UploadFragment" />
+    <dialog
+        android:id="@+id/settingDialogFragment"
+        android:name="com.hackyeon.eye_tracker.ui.play.settings.SettingDialogFragment"
+        android:label="SettingDialogFragment" />
 </navigation>

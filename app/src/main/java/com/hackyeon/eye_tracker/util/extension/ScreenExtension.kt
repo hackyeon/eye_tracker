@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.util
+package com.hackyeon.eye_tracker.util.extension
 
 import android.app.Activity
 import android.os.Build
