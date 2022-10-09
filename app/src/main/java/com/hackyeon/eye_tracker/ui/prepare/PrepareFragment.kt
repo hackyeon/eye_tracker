@@ -29,7 +29,7 @@ class PrepareFragment: BaseFragment() {
     }
     private fun regListener() {
         binding.btnStart.setOnClickListener {
-            navigate(R.id.actionToAnimationFragment)
+            navigate(R.id.actionToCalibrationFragment)
         }
     }
 

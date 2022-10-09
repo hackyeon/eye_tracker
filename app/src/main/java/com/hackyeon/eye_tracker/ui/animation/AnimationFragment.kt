@@ -10,18 +10,16 @@ import android.view.ViewTreeObserver
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.R
-import com.hackyeon.eye_tracker.databinding.PlayFragmentBinding
+import com.hackyeon.eye_tracker.databinding.AnimationFragmentBinding
 import com.hackyeon.eye_tracker.ui.BaseFragment
 import com.hackyeon.eye_tracker.ui.customview.animation.AnimationController
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AnimationFragment: BaseFragment() {
-    private lateinit var binding: PlayFragmentBinding
+    private lateinit var binding: AnimationFragmentBinding
     private var controller: AnimationController? = null
 
     override fun onCreateView(
@@ -29,7 +27,7 @@ class AnimationFragment: BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = PlayFragmentBinding.inflate(inflater, container, false)
+        binding = AnimationFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
