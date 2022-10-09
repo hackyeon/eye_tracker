@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.ui.play
+package com.hackyeon.eye_tracker.ui.animation
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,20 +10,18 @@ import android.view.ViewTreeObserver
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.databinding.PlayFragmentBinding
+import com.hackyeon.eye_tracker.ui.BaseFragment
 import com.hackyeon.eye_tracker.ui.customview.animation.AnimationController
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PlayFragment: Fragment() {
+class AnimationFragment: BaseFragment() {
     private lateinit var binding: PlayFragmentBinding
-    private val viewModel: MainViewModel by activityViewModels()
     private var controller: AnimationController? = null
 
     override fun onCreateView(
@@ -31,7 +29,7 @@ class PlayFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.play_fragment, container, false)
+        binding = PlayFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -64,7 +62,7 @@ class PlayFragment: Fragment() {
                     viewModel.flashTime.value?: MainViewModel.DEFAULT_FLASH_TIME,
                 ) {
                     viewModel.stopRecording()
-                    viewModel.navigate(PlayFragmentDirections.actionPlayFragmentToUploadFragment())
+                    navigate(R.id.uploadFragment)
                 }
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

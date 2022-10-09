@@ -2,9 +2,6 @@ package com.hackyeon.eye_tracker.ui.customview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.hackyeon.eye_tracker.R

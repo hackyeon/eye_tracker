@@ -7,9 +7,6 @@
     <color name="teal_700">#FF018786</color>
 
 
-
-
-
     <color name="white">#FFFFFFFF</color>
     <color name="white_apha10">#1AFFFFFF</color>
     <color name="white_apha20">#33FFFFFF</color>
@@ -20,7 +17,6 @@
     <color name="white_apha70">#B3FFFFFF</color>
     <color name="white_apha80">#CCFFFFFF</color>
     <color name="white_apha90">#E6FFFFFF</color>
-
 
     <color name="black">#FF000000</color>
     <color name="black_apha10">#1A000000</color>

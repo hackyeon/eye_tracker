@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.databinding.UploadFragmentBinding
+import com.hackyeon.eye_tracker.ui.BaseFragment
 
-class UploadFragment: Fragment() {
+class UploadFragment: BaseFragment() {
     private lateinit var binding: UploadFragmentBinding
 
     override fun onCreateView(
@@ -17,7 +16,7 @@ class UploadFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.upload_fragment, container, false)
+        binding = UploadFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

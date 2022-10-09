@@ -12,10 +12,11 @@ import androidx.core.view.WindowInsetsControllerCompat
  * 풀스크린 모드
  */
 fun Activity.setFullScreen() {
+    // cutout
     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         window.attributes.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
     }
-
+    // fullScreen
     WindowCompat.setDecorFitsSystemWindows(window, false)
     WindowInsetsControllerCompat(window, window.decorView).let { controller ->
         controller.hide(WindowInsetsCompat.Type.systemBars())

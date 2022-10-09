@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.manager
+package com.hackyeon.eye_tracker.util.manager
 
 import android.content.Context
 import android.content.SharedPreferences
