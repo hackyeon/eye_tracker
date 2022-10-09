@@ -5,5 +5,5 @@ object CalibrationConfig {
     const val VERTICAL_COUNT = 5
 
     const val CALIBRATION_DELAY = 4900L
-    const val TEST = 100L
+    const val CALIBRATION_REMOVE_DELAY = 100L
 }

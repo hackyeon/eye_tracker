@@ -13,10 +13,8 @@ import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.util.HLog
 import kotlinx.coroutines.*
-import kotlin.random.Random
 
 class CalibrationView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
-
     // icon
     private lateinit var mainIcon: ImageView
     private lateinit var subIcon: ImageView
@@ -26,16 +24,6 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
     private val yList = mutableListOf<Int>()
     private val coordinateList = mutableListOf<CoordinateItem>()
 
-    // iconView handler
-    private val mainHandler = Handler(Looper.getMainLooper())
-    private val subHandler = Handler(Looper.getMainLooper())
-    private val mainRunnable = Runnable {
-
-    }
-    private val subRunnable = Runnable {
-
-    }
-
     /**
      * calibration callback
      */
@@ -43,7 +31,6 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
     fun setCalibrationListener(listener: CalibrationListener) {
         this.mListener = listener
     }
-
 
     init {
         initLayout()
@@ -65,9 +52,37 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
         })
     }
 
+    /**
+     * 캘리브레이션 시작
+     */
     private fun startCalibration() {
         mListener?.onStartCalibration()
 
+        CoroutineScope(Dispatchers.Main).launch {
+            coordinateList.forEach {
+                mListener?.onItemChanged(it)
+                if(mainIcon.isVisible) {
+                    launch {
+                        delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                        mainIcon.visibility = View.GONE
+                    }
+                    subIcon.x = it.x.toFloat()
+                    subIcon.y = it.y.toFloat()
+                    subIcon.visibility = View.VISIBLE
+                    delay(CalibrationConfig.CALIBRATION_DELAY)
+                } else {
+                    launch {
+                        delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                        subIcon.visibility = View.GONE
+                    }
+                    mainIcon.x = it.x.toFloat()
+                    mainIcon.y = it.y.toFloat()
+                    mainIcon.visibility = View.VISIBLE
+                    delay(CalibrationConfig.CALIBRATION_DELAY)
+                }
+
+            }
+        }
 
     }
 
