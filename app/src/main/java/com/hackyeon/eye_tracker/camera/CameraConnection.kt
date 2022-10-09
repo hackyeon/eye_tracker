@@ -1,21 +1,84 @@
 package com.hackyeon.eye_tracker.camera
 
+import android.content.ContentValues
+import android.content.Context
+import android.provider.MediaStore
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.video.Quality
-import androidx.camera.video.QualitySelector
-import androidx.camera.video.Recorder
-import androidx.camera.video.VideoCapture
+import androidx.camera.video.*
 import androidx.camera.view.PreviewView
 import androidx.concurrent.futures.await
+import androidx.core.content.ContextCompat
+import androidx.core.util.Consumer
 import androidx.fragment.app.FragmentActivity
+import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.ext.getAspectRatio
+import com.hackyeon.eye_tracker.util.HLog
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 object CameraConnection {
     private var qualityList: List<Quality> = emptyList()
     private var videoCapture: VideoCapture<Recorder>? = null
+
+    private var currentRecording: Recording? = null
+    private var recordingState: VideoRecordEvent? = null
+
+    private val captureListener = Consumer<VideoRecordEvent> { event ->
+        if(event !is VideoRecordEvent.Status) recordingState = event
+    }
+
+    // for calibration
+    private val calibrationCoordinateList = mutableListOf<String>()
+
+    fun resetCalibration() {
+        calibrationCoordinateList.clear()
+    }
+
+    fun onCalibrationItemChanged(item: CoordinateItem) {
+        val nano = recordingState?.recordingStats?.recordedDurationNanos
+
+        d("nano: $nano")
+    }
+
+    /**
+     * 녹화 종료
+     */
+    fun stopRecording() {
+        if(currentRecording == null || recordingState is VideoRecordEvent.Finalize) return
+        currentRecording?.stop()
+        currentRecording = null
+    }
+
+    /**
+     * 녹화 시작
+     * @param context context
+     */
+    fun startRecording(context: Context) {
+        if(recordingState == null || recordingState is VideoRecordEvent.Finalize) {
+            val name = SimpleDateFormat(CameraConfig.DATE_FORMAT, Locale.KOREA)
+                .format(System.currentTimeMillis()) + CameraConfig.VIDEO_TYPE
+
+            val contentValues = ContentValues().apply {
+                put(MediaStore.Video.Media.DISPLAY_NAME, name)
+            }
+
+            val mediaStoreOutput = MediaStoreOutputOptions.Builder(
+                context.contentResolver,
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            )
+                .setContentValues(contentValues)
+                .build()
+
+            currentRecording = videoCapture?.output
+                ?.prepareRecording(context, mediaStoreOutput)
+                ?.start(ContextCompat.getMainExecutor(context), captureListener)
+        }
+    }
+
+
 
     /**
      * 카메라를 엑티비티에 바인딩한다
@@ -96,6 +159,10 @@ object CameraConnection {
     private suspend fun clearData() = withContext(Dispatchers.IO) {
         qualityList = emptyList()
         videoCapture = null
+    }
+
+    private fun d(msg: Any?) {
+        HLog.d("## [${this.javaClass.simpleName}] ## $msg")
     }
 
 }

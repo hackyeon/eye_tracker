@@ -24,6 +24,10 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
     private val yList = mutableListOf<Int>()
     private val coordinateList = mutableListOf<CoordinateItem>()
 
+    // scope
+    private val calibrationJob = Job()
+    private val calibrationScope = CoroutineScope(Dispatchers.Main + calibrationJob)
+
     /**
      * calibration callback
      */
@@ -56,34 +60,30 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
      * 캘리브레이션 시작
      */
     private fun startCalibration() {
-        mListener?.onStartCalibration()
+        calibrationScope.launch {
+            mListener?.onStartCalibration()
+            coordinateList.forEachIndexed { index, item ->
+                mListener?.onItemChanged(item)
+                val iconToShow = if(mainIcon.isVisible) subIcon else mainIcon
+                val iconToHide = if(mainIcon.isVisible) mainIcon else subIcon
 
-        CoroutineScope(Dispatchers.Main).launch {
-            coordinateList.forEach {
-                mListener?.onItemChanged(it)
-                if(mainIcon.isVisible) {
-                    launch {
-                        delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
-                        mainIcon.visibility = View.GONE
-                    }
-                    subIcon.x = it.x.toFloat()
-                    subIcon.y = it.y.toFloat()
-                    subIcon.visibility = View.VISIBLE
-                    delay(CalibrationConfig.CALIBRATION_DELAY)
-                } else {
-                    launch {
-                        delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
-                        subIcon.visibility = View.GONE
-                    }
-                    mainIcon.x = it.x.toFloat()
-                    mainIcon.y = it.y.toFloat()
-                    mainIcon.visibility = View.VISIBLE
-                    delay(CalibrationConfig.CALIBRATION_DELAY)
+                launch {
+                    delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                    iconToHide.visibility = View.GONE
                 }
+                iconToShow.x = item.x.toFloat()
+                iconToShow.y = item.y.toFloat()
+                iconToShow.visibility = View.VISIBLE
+                delay(CalibrationConfig.CALIBRATION_DELAY)
 
+                // 마지막 인덱스인 경우
+                if(index == coordinateList.lastIndex) {
+                    delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                    iconToShow.visibility = View.GONE
+                    mListener?.onCalibrationFinished()
+                }
             }
         }
-
     }
 
     /**

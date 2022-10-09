@@ -8,4 +8,6 @@ interface CalibrationListener {
     fun onStartCalibration()
 
     fun onItemChanged(item: CoordinateItem)
+
+    fun onCalibrationFinished()
 }

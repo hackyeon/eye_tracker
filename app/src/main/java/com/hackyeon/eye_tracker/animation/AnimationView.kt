@@ -6,7 +6,6 @@ import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.hackyeon.eye_tracker.R
-import com.hackyeon.eye_tracker.ui.customview.animation.AnimationController
 
 class AnimationView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
     private lateinit var icon: ImageView
