@@ -27,7 +27,7 @@ object CameraConnection {
     private var recordingState: VideoRecordEvent? = null
 
     private val captureListener = Consumer<VideoRecordEvent> { event ->
-        if(event !is VideoRecordEvent.Status) recordingState = event
+        recordingState = event
     }
 
     // for calibration
@@ -39,7 +39,6 @@ object CameraConnection {
 
     fun onCalibrationItemChanged(item: CoordinateItem) {
         val nano = recordingState?.recordingStats?.recordedDurationNanos
-
         d("nano: $nano")
     }
 

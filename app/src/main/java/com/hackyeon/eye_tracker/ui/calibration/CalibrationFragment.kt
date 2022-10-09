@@ -11,6 +11,8 @@ import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.databinding.CalibrationFragmentBinding
 import com.hackyeon.eye_tracker.ui.BaseFragment
 import com.hackyeon.eye_tracker.util.HLog
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class CalibrationFragment: BaseFragment(), CalibrationListener {
     private lateinit var binding: CalibrationFragmentBinding
@@ -26,11 +28,13 @@ class CalibrationFragment: BaseFragment(), CalibrationListener {
         return binding.root
     }
 
-    override fun onReady() = Unit
-
-    override fun onStartCalibration() {
+    override fun onReady() {
         CameraConnection.resetCalibration()
         CameraConnection.startRecording(requireActivity())
+    }
+
+    override fun onStartCalibration() {
+
     }
     override fun onItemChanged(item: CoordinateItem) = CameraConnection.onCalibrationItemChanged(item)
     override fun onCalibrationFinished() {

@@ -50,7 +50,7 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
                 setIcon()
                 setList()
                 mListener?.onReady()
-                startCalibration()
+//                startCalibration()
                 this@CalibrationView.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
