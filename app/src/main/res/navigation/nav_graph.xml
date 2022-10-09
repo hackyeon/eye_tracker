@@ -17,16 +17,22 @@
         android:id="@+id/uploadFragment"
         android:name="com.hackyeon.eye_tracker.ui.upload.UploadFragment"
         android:label="UploadFragment" />
+    <fragment
+        android:id="@+id/calibrationFragment"
+        android:name="com.hackyeon.eye_tracker.ui.calibration.CalibrationFragment"
+        android:label="CalibrationFragment" />
 
     <action
         android:id="@+id/actionToAnimationFragment"
         app:destination="@+id/animationFragment"/>
-
     <action
         android:id="@+id/actionToPrepareFragment"
         app:destination="@+id/prepareFragment"/>
-
     <action
         android:id="@+id/actionToUploadFragment"
         app:destination="@+id/uploadFragment"/>
+    <action
+        android:id="@+id/actionToCalibrationFragment"
+        app:destination="@+id/calibrationFragment" />
+
 </navigation>

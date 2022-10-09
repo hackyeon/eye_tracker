@@ -4,7 +4,6 @@ import android.Manifest
 import android.os.Build
 
 object CameraConfig {
-
     /**
      * 카메라 관련 권한을 가져온다
      */

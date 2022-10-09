@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hackyeon.eye_tracker.extensions
+package com.hackyeon.eye_tracker.camera.ext
 
 import androidx.camera.video.VideoRecordEvent
 

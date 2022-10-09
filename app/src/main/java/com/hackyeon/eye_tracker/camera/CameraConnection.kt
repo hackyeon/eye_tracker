@@ -1,7 +1,5 @@
 package com.hackyeon.eye_tracker.camera
 
-import android.app.Activity
-import android.content.Context
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -12,8 +10,7 @@ import androidx.camera.video.VideoCapture
 import androidx.camera.view.PreviewView
 import androidx.concurrent.futures.await
 import androidx.fragment.app.FragmentActivity
-import com.hackyeon.eye_tracker.MainActivity
-import com.hackyeon.eye_tracker.util.extension.getAspectRatio
+import com.hackyeon.eye_tracker.camera.ext.getAspectRatio
 import kotlinx.coroutines.*
 
 object CameraConnection {
@@ -78,6 +75,7 @@ object CameraConnection {
 
     /**
      * 카메라를 종료한다
+     * @param activity 카메라가 바인딩된 엑티비티
      */
     @OptIn(DelicateCoroutinesApi::class)
     fun closeCamera(activity: FragmentActivity) = GlobalScope.launch {

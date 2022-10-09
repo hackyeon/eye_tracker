@@ -37,7 +37,4 @@ class AnimationView @JvmOverloads constructor(context: Context, attrs: Attribute
     }
 
 
-
-
-
 }
