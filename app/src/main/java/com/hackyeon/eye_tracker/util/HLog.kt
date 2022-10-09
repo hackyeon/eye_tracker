@@ -5,7 +5,7 @@ import android.util.Log
 object HLog {
 
     private val DEBUG = true
-    private val TAG = "aabb"
+    private val TAG = "HLog"
 
     fun d(msg: Any?) {
         if(DEBUG) Log.d(TAG, "$msg")
