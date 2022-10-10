@@ -50,7 +50,6 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
                 setIcon()
                 setList()
                 mListener?.onReady()
-//                startCalibration()
                 this@CalibrationView.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
@@ -59,9 +58,8 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * 캘리브레이션 시작
      */
-    private fun startCalibration() {
+    fun startCalibration() {
         calibrationScope.launch {
-            mListener?.onStartCalibration()
             coordinateList.forEachIndexed { index, item ->
                 mListener?.onItemChanged(item)
                 val iconToShow = if(mainIcon.isVisible) subIcon else mainIcon

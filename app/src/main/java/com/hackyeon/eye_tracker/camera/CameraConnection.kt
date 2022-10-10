@@ -20,6 +20,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object CameraConnection {
+    private var mListener: CameraListener? = null
+    fun setListener(listener: CameraListener) {
+        this.mListener = listener
+    }
+    fun removeListener() {
+        this.mListener = null
+    }
+
     private var qualityList: List<Quality> = emptyList()
     private var videoCapture: VideoCapture<Recorder>? = null
 
@@ -27,16 +35,15 @@ object CameraConnection {
     private var recordingState: VideoRecordEvent? = null
 
     private val captureListener = Consumer<VideoRecordEvent> { event ->
+        if(event is VideoRecordEvent.Start) mListener?.onRecordingStart()
         recordingState = event
     }
 
     // for calibration
     private val calibrationCoordinateList = mutableListOf<String>()
-
     fun resetCalibration() {
         calibrationCoordinateList.clear()
     }
-
     fun onCalibrationItemChanged(item: CoordinateItem) {
         val nano = recordingState?.recordingStats?.recordedDurationNanos
         d("nano: $nano")
