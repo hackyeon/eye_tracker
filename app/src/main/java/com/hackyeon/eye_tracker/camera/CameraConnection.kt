@@ -14,7 +14,9 @@ import androidx.core.util.Consumer
 import androidx.fragment.app.FragmentActivity
 import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.ext.getAspectRatio
+import com.hackyeon.eye_tracker.repository.api.req.CalibrationData
 import com.hackyeon.eye_tracker.util.HLog
+import com.hackyeon.eye_tracker.util.TimeUtil
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -40,13 +42,18 @@ object CameraConnection {
     }
 
     // for calibration
-    private val calibrationCoordinateList = mutableListOf<String>()
+    private val calibrationDataList = mutableListOf<CalibrationData>()
     fun resetCalibration() {
-        calibrationCoordinateList.clear()
+        calibrationDataList.clear()
     }
     fun onCalibrationItemChanged(item: CoordinateItem) {
         val nano = recordingState?.recordingStats?.recordedDurationNanos
-        d("nano: $nano")
+        nano?.let {
+            d("nano: $it")
+            val result = TimeUtil.calculateTime(it)
+            d("result: $result")
+        }
+
     }
 
     /**
