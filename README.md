@@ -27,3 +27,7 @@ fragment activity 바인딩 위치 확인
 2022-10-09
 
 카메라 구조 변경
+
+2022-10-10
+
+calibration 완료
