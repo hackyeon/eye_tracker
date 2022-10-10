@@ -3,9 +3,7 @@
 
     <dimen name="default_margin">16dp</dimen>
 
-    <!-- prepare -->
-    <dimen name="edit_height">40dp</dimen>
-
-
+    <!-- setting -->
+    <dimen name="setting_width">280dp</dimen>
 
 </resources>

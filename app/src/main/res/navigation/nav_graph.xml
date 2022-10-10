@@ -34,5 +34,13 @@
     <action
         android:id="@+id/actionToCalibrationFragment"
         app:destination="@+id/calibrationFragment" />
+    <action
+        android:id="@+id/actionToSettingDialogFragment"
+        app:destination="@+id/settingDialogFragment" />
+
+    <dialog
+        android:id="@+id/settingDialogFragment"
+        android:name="com.hackyeon.eye_tracker.ui.setting.SettingDialogFragment"
+        android:label="SettingDialogFragment" />
 
 </navigation>

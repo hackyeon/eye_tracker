@@ -31,6 +31,9 @@ class PrepareFragment: BaseFragment() {
         binding.btnStart.setOnClickListener {
             navigate(R.id.actionToCalibrationFragment)
         }
+        binding.btnSetting.setOnClickListener {
+            navigate(R.id.actionToSettingDialogFragment)
+        }
     }
 
 }

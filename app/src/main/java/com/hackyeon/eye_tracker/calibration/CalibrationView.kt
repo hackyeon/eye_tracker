@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.view.isVisible
 import com.hackyeon.eye_tracker.R
+import com.hackyeon.eye_tracker.calibration.data.CalibrationMode
 import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.util.HLog
 import kotlinx.coroutines.*
@@ -97,9 +98,6 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
         subIcon.visibility = View.GONE
     }
 
-    // 임시 true 45 false 23
-    private var mode = false
-
     /**
      * calibration에 사용될 리스트를 만든다
      */
@@ -119,14 +117,14 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
 
         xList.forEachIndexed { xIndex, x ->
             yList.forEachIndexed { yIndex, y ->
-                if(mode) {
-                    coordinateList.add(CoordinateItem(x, y))
-                } else {
+                if(mListener?.getCalibrationMode() == CalibrationMode.HALF) {
                     if(xIndex % 2 == 0 && yIndex % 2 == 0) {
                         coordinateList.add(CoordinateItem(x, y))
                     } else if(xIndex % 2 != 0 && yIndex % 2 != 0) {
                         coordinateList.add(CoordinateItem(x, y))
                     }
+                } else {
+                    coordinateList.add(CoordinateItem(x, y))
                 }
             }
         }
@@ -139,10 +137,7 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
 
         d("list: $coordinateList")
         d("size: ${coordinateList.size}")
-
     }
-
-
 
     private fun d(msg: Any?) {
         HLog.d("## [${this.javaClass.simpleName}] ## $msg")

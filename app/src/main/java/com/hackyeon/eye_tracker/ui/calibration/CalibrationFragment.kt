@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.calibration.CalibrationListener
+import com.hackyeon.eye_tracker.calibration.data.CalibrationMode
 import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.camera.CameraListener
@@ -46,6 +47,7 @@ class CalibrationFragment: BaseFragment() {
     }
 
     private val calibrationListener = object: CalibrationListener {
+        override fun getCalibrationMode(): CalibrationMode = viewModel.calibrationMode.value?: CalibrationMode.FULL
         override fun onReady() {
             CameraConnection.resetCalibration()
             CameraConnection.startRecording(requireActivity())

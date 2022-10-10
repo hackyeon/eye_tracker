@@ -10,4 +10,10 @@
     <string name="start">START</string>
 
 
+    <!-- setting -->
+    <string name="setting_title">설정</string>
+    <string name="setting_calibration_full">FULL</string>
+    <string name="setting_calibration_half">HALF</string>
+    <string name="setting_calibration_title">CALIBRATION MODE</string>
+
 </resources>
