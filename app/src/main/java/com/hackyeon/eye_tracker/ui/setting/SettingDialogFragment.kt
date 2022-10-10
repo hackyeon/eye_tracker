@@ -30,7 +30,6 @@ class SettingDialogFragment: DialogFragment() {
         regListener()
     }
 
-
     private fun regObserve() {
         viewModel.calibrationMode.observe(viewLifecycleOwner) {
             binding.switchCalibration.isChecked = it == CalibrationMode.HALF
@@ -42,7 +41,6 @@ class SettingDialogFragment: DialogFragment() {
             viewModel.setCalibrationMode(isChecked)
         }
     }
-
 
     override fun onDestroyView() {
         viewModel.saveSetting()

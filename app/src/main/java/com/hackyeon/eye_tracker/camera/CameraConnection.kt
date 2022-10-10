@@ -47,13 +47,9 @@ object CameraConnection {
         calibrationDataList.clear()
     }
     fun onCalibrationItemChanged(item: CoordinateItem) {
-        val nano = recordingState?.recordingStats?.recordedDurationNanos
-        nano?.let {
-            d("nano: $it")
-            val result = TimeUtil.calculateTime(it)
-            d("result: $result")
-        }
-
+        val nano = recordingState?.recordingStats?.recordedDurationNanos?: 0L
+        val time = TimeUtil.calculateTime(nano)
+        calibrationDataList.add(CalibrationData(item.x, item.y, time))
     }
 
     /**
