@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
 
-    <com.hackyeon.eye_tracker.calibration.CalibrationView
+    <com.hackyeon.eye_tracker.ui.calibration.CalibrationView
         android:id="@+id/calibrationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

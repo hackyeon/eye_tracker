@@ -4,13 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.hackyeon.eye_tracker.MainViewModel
-import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.databinding.PrepareFragmentBinding
-import com.hackyeon.eye_tracker.ui.BaseFragment
+import com.hackyeon.eye_tracker.ui.base.BaseFragment
 
 class PrepareFragment: BaseFragment() {
     private lateinit var binding: PrepareFragmentBinding
@@ -30,7 +26,9 @@ class PrepareFragment: BaseFragment() {
     }
     private fun regListener() {
         binding.btnStart.setOnClickListener {
-            findNavController().navigate(PrepareFragmentDirections.toCalibration())
+            // todo state
+            findNavController().navigate(PrepareFragmentDirections.toAnimation())
+//            findNavController().navigate(PrepareFragmentDirections.toCalibration())
         }
         binding.btnSetting.setOnClickListener {
             findNavController().navigate(PrepareFragmentDirections.toSetting())

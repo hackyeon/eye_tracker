@@ -1,8 +1,6 @@
-package com.hackyeon.eye_tracker.calibration
+package com.hackyeon.eye_tracker.ui.calibration
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
@@ -10,8 +8,9 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.view.isVisible
 import com.hackyeon.eye_tracker.R
-import com.hackyeon.eye_tracker.calibration.data.CalibrationMode
-import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
+import com.hackyeon.eye_tracker.ui.base.BaseConfig
+import com.hackyeon.eye_tracker.ui.calibration.data.CalibrationMode
+import com.hackyeon.eye_tracker.ui.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.util.HLog
 import kotlinx.coroutines.*
 
@@ -89,12 +88,12 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
      * 아이콘의 사이즈를 디바이스에 맞게 설정한다
      */
     private fun setIcon() {
-        mainIcon.layoutParams.width = measuredWidth / CalibrationConfig.HORIZONTAL_COUNT
-        mainIcon.layoutParams.height = measuredHeight / CalibrationConfig.VERTICAL_COUNT
+        mainIcon.layoutParams.width = measuredWidth / BaseConfig.HORIZONTAL_COUNT
+        mainIcon.layoutParams.height = measuredHeight / BaseConfig.VERTICAL_COUNT
         mainIcon.visibility = View.GONE
 
-        subIcon.layoutParams.width = measuredWidth / CalibrationConfig.HORIZONTAL_COUNT
-        subIcon.layoutParams.height = measuredHeight / CalibrationConfig.VERTICAL_COUNT
+        subIcon.layoutParams.width = measuredWidth / BaseConfig.HORIZONTAL_COUNT
+        subIcon.layoutParams.height = measuredHeight / BaseConfig.VERTICAL_COUNT
         subIcon.visibility = View.GONE
     }
 
@@ -102,15 +101,15 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
      * calibration에 사용될 리스트를 만든다
      */
     private fun setList() {
-        val xValue = measuredWidth / CalibrationConfig.HORIZONTAL_COUNT
-        for (i in 0 until CalibrationConfig.HORIZONTAL_COUNT) {
+        val xValue = measuredWidth / BaseConfig.HORIZONTAL_COUNT
+        for (i in 0 until BaseConfig.HORIZONTAL_COUNT) {
             xList.add(xValue * i)
         }
         d("width: $measuredWidth")
         d("xList: $xList")
         d("xListSize: ${xList.size}")
-        val yValue = measuredHeight / CalibrationConfig.VERTICAL_COUNT
-        for (i in 0 until CalibrationConfig.VERTICAL_COUNT) {
+        val yValue = measuredHeight / BaseConfig.VERTICAL_COUNT
+        for (i in 0 until BaseConfig.VERTICAL_COUNT) {
             yList.add(yValue * i)
         }
         d("yListSize: ${yList.size}")
@@ -132,8 +131,8 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
         d("list: $coordinateList")
         d("size: ${coordinateList.size}")
 
-        coordinateList.add(0, CoordinateItem(xList[CalibrationConfig.HORIZONTAL_COUNT / 2], yList[0]))
-        coordinateList.add(0, CoordinateItem(xList[CalibrationConfig.HORIZONTAL_COUNT / 2], yList[CalibrationConfig.VERTICAL_COUNT / 2]))
+        coordinateList.add(0, CoordinateItem(xList[BaseConfig.HORIZONTAL_COUNT / 2], yList[0]))
+        coordinateList.add(0, CoordinateItem(xList[BaseConfig.HORIZONTAL_COUNT / 2], yList[BaseConfig.VERTICAL_COUNT / 2]))
 
         d("list: $coordinateList")
         d("size: ${coordinateList.size}")

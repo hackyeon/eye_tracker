@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.calibration.data
+package com.hackyeon.eye_tracker.ui.calibration.data
 
 data class CoordinateItem(
     val x: Int,

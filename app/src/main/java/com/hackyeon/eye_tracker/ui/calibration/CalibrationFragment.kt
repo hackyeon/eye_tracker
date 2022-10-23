@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.hackyeon.eye_tracker.R
-import com.hackyeon.eye_tracker.calibration.CalibrationListener
-import com.hackyeon.eye_tracker.calibration.data.CalibrationMode
-import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
+import com.hackyeon.eye_tracker.ui.calibration.data.CalibrationMode
+import com.hackyeon.eye_tracker.ui.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.camera.CameraListener
 import com.hackyeon.eye_tracker.databinding.CalibrationFragmentBinding
-import com.hackyeon.eye_tracker.ui.BaseFragment
+import com.hackyeon.eye_tracker.ui.base.BaseFragment
+import com.hackyeon.eye_tracker.ui.base.BaseRecordingFragment
 import com.hackyeon.eye_tracker.util.HLog
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
-class CalibrationFragment: BaseFragment() {
+class CalibrationFragment: BaseRecordingFragment() {
     private lateinit var binding: CalibrationFragmentBinding
 
     override fun onCreateView(
@@ -31,17 +28,7 @@ class CalibrationFragment: BaseFragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        CameraConnection.setListener(cameraListener)
-    }
-
-    override fun onDestroy() {
-        CameraConnection.removeListener()
-        super.onDestroy()
-    }
-
-    private val cameraListener = object: CameraListener {
+    override val cameraListener = object: CameraListener {
         override fun onRecordingStart() {
             binding.calibrationView.startCalibration()
         }

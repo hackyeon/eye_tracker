@@ -1,4 +1,4 @@
-package com.hackyeon.eye_tracker.calibration.data
+package com.hackyeon.eye_tracker.ui.calibration.data
 
 enum class CalibrationMode(val value: Int) {
     FULL(0), HALF(1);

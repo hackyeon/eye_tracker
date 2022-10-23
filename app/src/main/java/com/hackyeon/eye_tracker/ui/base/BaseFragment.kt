@@ -1,16 +1,13 @@
-package com.hackyeon.eye_tracker.ui
+package com.hackyeon.eye_tracker.ui.base
 
 import android.content.Context
 import androidx.activity.OnBackPressedCallback
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.util.HLog
 
-open class BaseFragment: Fragment() {
+abstract class BaseFragment: Fragment() {
     protected val viewModel: MainViewModel by activityViewModels()
     private lateinit var backCallback: OnBackPressedCallback
 

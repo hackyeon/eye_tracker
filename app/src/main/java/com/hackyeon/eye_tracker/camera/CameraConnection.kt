@@ -12,7 +12,7 @@ import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
 import androidx.core.util.Consumer
 import androidx.fragment.app.FragmentActivity
-import com.hackyeon.eye_tracker.calibration.data.CoordinateItem
+import com.hackyeon.eye_tracker.ui.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.ext.getAspectRatio
 import com.hackyeon.eye_tracker.repository.api.req.CalibrationData
 import com.hackyeon.eye_tracker.util.HLog
