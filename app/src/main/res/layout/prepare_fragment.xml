@@ -15,16 +15,16 @@
         android:layout_height="0dp"
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_setting"
-        app:layout_constraintTop_toTopOf="@id/btn_setting"
-        app:layout_constraintBottom_toBottomOf="@id/btn_setting"
+        app:layout_constraintEnd_toStartOf="@id/btn_setting_and_clear"
+        app:layout_constraintTop_toTopOf="@id/btn_setting_and_clear"
+        app:layout_constraintBottom_toBottomOf="@id/btn_setting_and_clear"
         />
 
     <ImageButton
-        android:id="@+id/btn_setting"
+        android:id="@+id/btn_setting_and_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_settings_24"
+        android:src="@drawable/setting_clear_selector"
         android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

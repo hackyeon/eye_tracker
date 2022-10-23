@@ -58,28 +58,26 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * 캘리브레이션 시작
      */
-    fun startCalibration() {
-        calibrationScope.launch {
-            coordinateList.forEachIndexed { index, item ->
-                mListener?.onItemChanged(item)
-                val iconToShow = if(mainIcon.isVisible) subIcon else mainIcon
-                val iconToHide = if(mainIcon.isVisible) mainIcon else subIcon
+    fun startCalibration() = calibrationScope.launch {
+        coordinateList.forEachIndexed { index, item ->
+            mListener?.onItemChanged(item)
+            val iconToShow = if(mainIcon.isVisible) subIcon else mainIcon
+            val iconToHide = if(mainIcon.isVisible) mainIcon else subIcon
 
-                launch {
-                    delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
-                    iconToHide.visibility = View.GONE
-                }
-                iconToShow.x = item.x.toFloat()
-                iconToShow.y = item.y.toFloat()
-                iconToShow.visibility = View.VISIBLE
-                delay(CalibrationConfig.CALIBRATION_DELAY)
+            launch {
+                delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                iconToHide.visibility = View.GONE
+            }
+            iconToShow.x = item.x.toFloat()
+            iconToShow.y = item.y.toFloat()
+            iconToShow.visibility = View.VISIBLE
+            delay(CalibrationConfig.CALIBRATION_DELAY)
 
-                // 마지막 인덱스인 경우
-                if(index == coordinateList.lastIndex) {
-                    delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
-                    iconToShow.visibility = View.GONE
-                    mListener?.onCalibrationFinished()
-                }
+            // 마지막 인덱스인 경우
+            if(index == coordinateList.lastIndex) {
+                delay(CalibrationConfig.CALIBRATION_REMOVE_DELAY)
+                iconToShow.visibility = View.GONE
+                mListener?.onCalibrationFinished()
             }
         }
     }

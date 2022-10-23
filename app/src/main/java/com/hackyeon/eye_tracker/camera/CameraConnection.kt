@@ -22,12 +22,22 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object CameraConnection {
+    /**
+     * camera callback
+     */
     private var mListener: CameraListener? = null
     fun setListener(listener: CameraListener) {
         this.mListener = listener
     }
     fun removeListener() {
         this.mListener = null
+    }
+
+    /**
+     * 녹화와 관련된 데이터를 초기화한다
+     */
+    fun clearData() {
+        calibrationDataList.clear()
     }
 
     private var qualityList: List<Quality> = emptyList()
@@ -87,8 +97,6 @@ object CameraConnection {
         }
     }
 
-
-
     /**
      * 카메라를 엑티비티에 바인딩한다
      * @param activity 바인딩할 엑티비티
@@ -145,30 +153,30 @@ object CameraConnection {
         }
     }
 
-    /**
-     * 카메라를 종료한다
-     * @param activity 카메라가 바인딩된 엑티비티
-     */
-    @OptIn(DelicateCoroutinesApi::class)
-    fun closeCamera(activity: FragmentActivity) = GlobalScope.launch {
-        unBindCamera(activity)
-        clearData()
-    }
-    /**
-     * 카메라 바인딩을 해제한다
-     * @param activity 바안딩된 엑티비티
-     */
-    private suspend fun unBindCamera(activity: FragmentActivity) = withContext(Dispatchers.Main) {
-        val provider = ProcessCameraProvider.getInstance(activity).await()
-        provider.unbindAll()
-    }
-    /**
-     * 데이터 초기화
-     */
-    private suspend fun clearData() = withContext(Dispatchers.IO) {
-        qualityList = emptyList()
-        videoCapture = null
-    }
+//    /**
+//     * 카메라를 종료한다
+//     * @param activity 카메라가 바인딩된 엑티비티
+//     */
+//    @OptIn(DelicateCoroutinesApi::class)
+//    fun closeCamera(activity: FragmentActivity) = GlobalScope.launch {
+//        unBindCamera(activity)
+//        clearData()
+//    }
+//    /**
+//     * 카메라 바인딩을 해제한다
+//     * @param activity 바안딩된 엑티비티
+//     */
+//    private suspend fun unBindCamera(activity: FragmentActivity) = withContext(Dispatchers.Main) {
+//        val provider = ProcessCameraProvider.getInstance(activity).await()
+//        provider.unbindAll()
+//    }
+//    /**
+//     * 데이터 초기화
+//     */
+//    private suspend fun clearData() = withContext(Dispatchers.IO) {
+//        qualityList = emptyList()
+//        videoCapture = null
+//    }
 
     private fun d(msg: Any?) {
         HLog.d("## [${this.javaClass.simpleName}] ## $msg")

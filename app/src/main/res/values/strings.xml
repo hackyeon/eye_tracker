@@ -15,5 +15,8 @@
     <string name="setting_calibration_full">FULL</string>
     <string name="setting_calibration_half">HALF</string>
     <string name="setting_calibration_title">CALIBRATION MODE</string>
+    
+    <!-- upload -->
+    <string name="upload_clear_home">초기화면으로 돌아가기</string>
 
 </resources>

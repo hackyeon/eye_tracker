@@ -36,3 +36,4 @@ calibration 완료
 
 navigation view 이슈
 animation 완료
+prepare state / 데이터 초기화

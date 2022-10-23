@@ -22,4 +22,17 @@ class MainViewModel: ViewModel() {
         repository.setCalibrationMode(calibrationMode.value)
     }
 
+    // next recording
+    enum class NextRecording { CALIBRATION, ANIMATION; }
+    private val _nextRecording = MutableLiveData<NextRecording>(NextRecording.CALIBRATION)
+    val nextRecording: LiveData<NextRecording> = _nextRecording
+    fun setNextRecording(value: NextRecording) = _nextRecording.postValue(value)
+
+
+    /**
+     * 녹화와 관련된 데이터를 초기화한다
+     */
+    fun clearData() {
+        _nextRecording.postValue(NextRecording.CALIBRATION)
+    }
 }

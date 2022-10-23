@@ -5,6 +5,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hackyeon.eye_tracker.MainViewModel
+import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.util.HLog
 
 abstract class BaseFragment: Fragment() {
@@ -24,6 +25,11 @@ abstract class BaseFragment: Fragment() {
     override fun onDetach() {
         super.onDetach()
         backCallback.remove()
+    }
+
+    protected fun clearData() {
+        viewModel.clearData()
+        CameraConnection.clearData()
     }
 
     private fun d(msg: Any?) {

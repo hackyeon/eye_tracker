@@ -22,6 +22,14 @@ class UploadFragment: BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        regListener()
     }
 
+    private fun regListener() {
+        binding.btnClearAndHome.setOnClickListener {
+            clearData()
+            findNavController().navigate(UploadFragmentDirections.toPrepare())
+        }
+    }
 }

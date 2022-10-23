@@ -12,8 +12,12 @@ android {
         applicationId "com.hackyeon.eye_tracker"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        /**
+         * 연도+월+일+번호
+         * ex) 22102301 // 2022년10월23일01
+         */
+        versionCode 22102301
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.ui.calibration.data.CalibrationMode
 import com.hackyeon.eye_tracker.ui.calibration.data.CoordinateItem
 import com.hackyeon.eye_tracker.camera.CameraConnection
@@ -43,7 +44,7 @@ class CalibrationFragment: BaseRecordingFragment() {
         override fun onItemChanged(item: CoordinateItem) = CameraConnection.onCalibrationItemChanged(item)
         override fun onCalibrationFinished() {
             CameraConnection.stopRecording()
-            // todo state
+            viewModel.setNextRecording(MainViewModel.NextRecording.ANIMATION)
             findNavController().navigateUp()
         }
     }
