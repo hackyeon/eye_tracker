@@ -14,10 +14,6 @@ open class BaseFragment: Fragment() {
     protected val viewModel: MainViewModel by activityViewModels()
     private lateinit var backCallback: OnBackPressedCallback
 
-    protected fun navigate(@IdRes resId: Int) {
-        findNavController().navigate(resId)
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         backCallback = object: OnBackPressedCallback(true) {

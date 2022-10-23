@@ -60,7 +60,7 @@ class AnimationFragment: BaseFragment() {
                     viewModel.flashTime.value?: MainViewModel.DEFAULT_FLASH_TIME,
                 ) {
                     viewModel.stopRecording()
-                    navigate(R.id.uploadFragment)
+//                    navigate(R.id.uploadFragment)
                 }
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

@@ -7,36 +7,40 @@
     <fragment
         android:id="@+id/prepareFragment"
         android:name="com.hackyeon.eye_tracker.ui.prepare.PrepareFragment"
-        android:label="PrepareFragment" />
+        android:label="PrepareFragment" >
+        <action
+            android:id="@+id/to_calibration"
+            app:destination="@id/calibrationFragment" />
+        <action
+            android:id="@+id/to_setting"
+            app:destination="@id/settingDialogFragment" />
+        <action
+            android:id="@+id/to_animation"
+            app:destination="@id/animationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/animationFragment"
         android:name="com.hackyeon.eye_tracker.ui.animation.AnimationFragment"
         android:label="PlayFragment" >
+        <action
+            android:id="@+id/to_upload"
+            app:destination="@id/uploadFragment" />
     </fragment>
     <fragment
         android:id="@+id/uploadFragment"
         android:name="com.hackyeon.eye_tracker.ui.upload.UploadFragment"
-        android:label="UploadFragment" />
+        android:label="UploadFragment" >
+        <action
+            android:id="@+id/to_prepare"
+            app:destination="@id/prepareFragment"
+            app:popUpTo="@+id/prepareFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
     <fragment
         android:id="@+id/calibrationFragment"
         android:name="com.hackyeon.eye_tracker.ui.calibration.CalibrationFragment"
         android:label="CalibrationFragment" />
-
-    <action
-        android:id="@+id/actionToAnimationFragment"
-        app:destination="@+id/animationFragment"/>
-    <action
-        android:id="@+id/actionToPrepareFragment"
-        app:destination="@+id/prepareFragment"/>
-    <action
-        android:id="@+id/actionToUploadFragment"
-        app:destination="@+id/uploadFragment"/>
-    <action
-        android:id="@+id/actionToCalibrationFragment"
-        app:destination="@+id/calibrationFragment" />
-    <action
-        android:id="@+id/actionToSettingDialogFragment"
-        app:destination="@+id/settingDialogFragment" />
 
     <dialog
         android:id="@+id/settingDialogFragment"

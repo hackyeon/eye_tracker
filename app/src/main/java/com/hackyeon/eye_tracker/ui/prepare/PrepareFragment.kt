@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.databinding.PrepareFragmentBinding
@@ -29,10 +30,10 @@ class PrepareFragment: BaseFragment() {
     }
     private fun regListener() {
         binding.btnStart.setOnClickListener {
-            navigate(R.id.actionToCalibrationFragment)
+            findNavController().navigate(PrepareFragmentDirections.toSetting())
         }
         binding.btnSetting.setOnClickListener {
-            navigate(R.id.actionToSettingDialogFragment)
+            findNavController().navigate(PrepareFragmentDirections.toCalibration())
         }
     }
 
