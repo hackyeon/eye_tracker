@@ -30,10 +30,10 @@ class PrepareFragment: BaseFragment() {
     }
     private fun regListener() {
         binding.btnStart.setOnClickListener {
-            findNavController().navigate(PrepareFragmentDirections.toSetting())
+            findNavController().navigate(PrepareFragmentDirections.toCalibration())
         }
         binding.btnSetting.setOnClickListener {
-            findNavController().navigate(PrepareFragmentDirections.toCalibration())
+            findNavController().navigate(PrepareFragmentDirections.toSetting())
         }
     }
 
