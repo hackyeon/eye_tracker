@@ -31,3 +31,8 @@ fragment activity 바인딩 위치 확인
 2022-10-10
 
 calibration 완료
+
+2022-10-23
+
+navigation view 이슈
+animation 완료
