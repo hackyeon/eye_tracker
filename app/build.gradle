@@ -69,4 +69,7 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:${rootProject.camerax_version}"
     implementation "androidx.camera:camera-video:${rootProject.camerax_version}"
     implementation "androidx.camera:camera-view:${rootProject.camerax_version}"
+
+    // horizontal number picker
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 }

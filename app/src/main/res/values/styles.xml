@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="mainTitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/main_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subTitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/sub_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">@dimen/setting_text_item_width</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="horizontal_number">
+        <item name="np_dividerColor">@android:color/transparent</item>
+        <item name="np_selectedTextSize">@dimen/sub_title_text_size</item>
+        <item name="np_textSize">@dimen/sub_title_text_size</item>
+        <item name="np_width">@dimen/setting_number_width</item>
+        <item name="np_height">@dimen/setting_number_height</item>
+        <item name="android:layout_height">@dimen/setting_number_height</item>
+        <item name="android:layout_width">@dimen/setting_number_width</item>
+        <item name="np_orientation">horizontal</item>
+    </style>
+
+
+</resources>

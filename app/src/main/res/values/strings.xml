@@ -12,10 +12,24 @@
 
     <!-- setting -->
     <string name="setting_title">설정</string>
+    <!-- setting calibration -->
     <string name="setting_calibration_full">FULL</string>
     <string name="setting_calibration_half">HALF</string>
-    <string name="setting_calibration_title">CALIBRATION MODE</string>
-    
+    <string name="setting_calibration_title">CALIBRATION</string>
+    <string name="setting_calibration_mode">모드</string>
+    <string name="setting_calibration_interval">간격</string>
+    <!-- setting animation -->
+    <string name="setting_animation_title">ANIMATION</string>
+    <string name="setting_animation_speed">속도</string>
+    <!-- setting dark -->
+    <string name="setting_dark">DARK</string>
+    <string name="setting_light">LIGHT</string>
+    <string name="setting_color_title">색상</string>
+    <!-- setting land -->
+    <string name="setting_land">가로</string>
+    <string name="setting_port">세로</string>
+    <string name="setting_land_title">방향</string>
+
     <!-- upload -->
     <string name="upload_clear_home">초기화면으로 돌아가기</string>
 

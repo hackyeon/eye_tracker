@@ -47,6 +47,8 @@ class CalibrationFragment: BaseRecordingFragment() {
             viewModel.setNextRecording(MainViewModel.NextRecording.ANIMATION)
             findNavController().navigateUp()
         }
+
+        override fun getCalibrationInterval(): Long? = viewModel.calibrationInterval.value
     }
 
     private fun d(msg: Any?) {

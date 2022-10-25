@@ -24,4 +24,9 @@ interface CalibrationListener {
      * calibration 종료
      */
     fun onCalibrationFinished()
+
+    /**
+     * calibration 간격을 가져온다
+     */
+    fun getCalibrationInterval(): Long?
 }

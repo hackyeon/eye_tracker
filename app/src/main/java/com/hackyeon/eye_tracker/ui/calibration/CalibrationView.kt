@@ -71,7 +71,7 @@ class CalibrationView @JvmOverloads constructor(context: Context, attrs: Attribu
             iconToShow.x = item.x.toFloat()
             iconToShow.y = item.y.toFloat()
             iconToShow.visibility = View.VISIBLE
-            delay(CalibrationConfig.CALIBRATION_DELAY)
+            delay(mListener?.getCalibrationInterval()?: CalibrationConfig.CALIBRATION_DELAY)
 
             // 마지막 인덱스인 경우
             if(index == coordinateList.lastIndex) {

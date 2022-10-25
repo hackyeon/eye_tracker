@@ -18,8 +18,15 @@ class MainViewModel: ViewModel() {
         val mode = if(value) CalibrationMode.HALF else CalibrationMode.FULL
         _calibrationMode.postValue(mode)
     }
+    private val _calibrationInterval = MutableLiveData<Long>(repository.getCalibrationInterval())
+    val calibrationInterval: LiveData<Long> = _calibrationInterval
+    fun setCalibrationInterval(value: Int) {
+        val result = (value * 1000 - 100).toLong()
+        _calibrationInterval.postValue(result)
+    }
     fun saveSetting() {
         repository.setCalibrationMode(calibrationMode.value)
+        repository.setCalibrationInterval(calibrationInterval.value)
     }
 
     // next recording
@@ -27,7 +34,6 @@ class MainViewModel: ViewModel() {
     private val _nextRecording = MutableLiveData<NextRecording>(NextRecording.CALIBRATION)
     val nextRecording: LiveData<NextRecording> = _nextRecording
     fun setNextRecording(value: NextRecording) = _nextRecording.postValue(value)
-
 
     /**
      * 녹화와 관련된 데이터를 초기화한다

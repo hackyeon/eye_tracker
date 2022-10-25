@@ -7,6 +7,7 @@
     >
 
     <TextView
+        style="@style/mainTitleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,58 +18,291 @@
         android:layout_height="wrap_content"
         />
 
-    <!-- calibration -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_setting_title"
-        android:id="@+id/cl_calibration_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_calibration_full"
-            android:id="@+id/tv_calibration_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_calibration_title"
-            />
+        android:layout_height="wrap_content"
+        >
 
 
-        <TextView
-            android:id="@+id/tv_calibration_full"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_calibration_full"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/switch_calibration"
-        />
+        <LinearLayout
+            android:paddingHorizontal="@dimen/default_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.SwitchCompat
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_calibration_half"
-            android:id="@+id/switch_calibration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <!-- base -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_base_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            />
 
-        <TextView
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/tv_calibration_half"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_calibration_half"
-        />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- calibration -->
+                <!-- dark mode -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/cl_dark_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/setting_sub_title_margin"
+                        android:gravity="center"
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_dark_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_color_title" />
+                    <TextView
+                        style="@style/text"
+                        android:id="@+id/tv_light"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_light"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switch_dark" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_dark"
+                        android:id="@+id/switch_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_dark"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_dark"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- dark mode -->
+
+                <!-- landscape mode -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/cl_dark_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/cl_land_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/setting_sub_title_margin"
+                        android:gravity="center"
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_land_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_land_title" />
+                    <TextView
+                        style="@style/text"
+                        android:id="@+id/tv_land"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_port"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switch_land" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_port"
+                        android:id="@+id/switch_land"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_port"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_land"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- landscape mode -->
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- base -->
+
+            <!-- calibration -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_calibration_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- title -->
+                <TextView
+                    android:text="@string/setting_calibration_title"
+                    style="@style/subTitleText"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/tv_calibration_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- title -->
+
+                <!-- mode -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/tv_calibration_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/cl_mode_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/setting_sub_title_margin"
+                        android:gravity="center"
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_calibration_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_calibration_mode" />
+                    <TextView
+                        style="@style/text"
+                        android:id="@+id/tv_calibration_full"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_calibration_full"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switch_calibration" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_calibration_half"
+                        android:id="@+id/switch_calibration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_calibration_half"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_calibration_half"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- mode -->
+
+                <!-- interval -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_mode_container"
+                    android:id="@+id/cl_interval_container"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/setting_item_height">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/setting_sub_title_margin"
+                        android:gravity="center"
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_calibration_interval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_calibration_interval" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        style="@style/horizontal_number"
+                        android:id="@+id/np_calibration_interval"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- interval -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- calibration -->
+
+
+            <!-- animation -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_animation_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- title -->
+                <TextView
+                    android:text="@string/setting_animation_title"
+                    style="@style/subTitleText"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/tv_animation_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!-- title -->
+
+                <!-- speed -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_animation_title"
+                    android:id="@+id/cl_speed_container"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/setting_item_height">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/setting_sub_title_margin"
+                        android:gravity="center"
+                        style="@style/text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/tv_animation_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setting_animation_speed" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        style="@style/horizontal_number"
+                        android:id="@+id/np_animation_speed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- speed -->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- animation -->
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
