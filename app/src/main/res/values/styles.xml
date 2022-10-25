@@ -28,5 +28,6 @@
         <item name="np_orientation">horizontal</item>
     </style>
 
+    <style name="eyetracker_alert" parent="Theme.AppCompat.Light.Dialog.Alert"/>
 
 </resources>

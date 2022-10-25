@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.hackyeon.eye_tracker.MainViewModel
+import com.hackyeon.eye_tracker.R
 import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.databinding.PrepareFragmentBinding
 import com.hackyeon.eye_tracker.ui.base.BaseFragment
+import com.hackyeon.eye_tracker.util.showConfirmAlert
 
 class PrepareFragment: BaseFragment() {
     private lateinit var binding: PrepareFragmentBinding
@@ -48,7 +50,9 @@ class PrepareFragment: BaseFragment() {
             if(viewModel.nextRecording.value == MainViewModel.NextRecording.CALIBRATION) {
                 findNavController().navigate(PrepareFragmentDirections.toSetting())
             } else {
-                clearData()
+                showConfirmAlert(R.string.clear_data_info) {
+                    if(it) clearData()
+                }
             }
         }
     }

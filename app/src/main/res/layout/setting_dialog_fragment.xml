@@ -39,107 +39,103 @@
                 android:id="@+id/cl_base_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
                 <!-- dark mode -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/cl_dark_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/setting_item_height">
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:id="@+id/cl_dark_container"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/setting_item_height">-->
 
-                    <TextView
-                        android:layout_marginStart="@dimen/setting_sub_title_margin"
-                        android:gravity="center"
-                        style="@style/text"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:id="@+id/tv_dark_mode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_color_title" />
-                    <TextView
-                        style="@style/text"
-                        android:id="@+id/tv_light"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_light"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/switch_dark" />
+<!--                    <TextView-->
+<!--                        android:layout_marginStart="@dimen/setting_sub_title_margin"-->
+<!--                        android:gravity="center"-->
+<!--                        style="@style/text"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:id="@+id/tv_dark_mode"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_color_title" />-->
+<!--                    <TextView-->
+<!--                        style="@style/text"-->
+<!--                        android:id="@+id/tv_light"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_light"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/switch_dark" />-->
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tv_dark"
-                        android:id="@+id/switch_dark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+<!--                    <androidx.appcompat.widget.SwitchCompat-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/tv_dark"-->
+<!--                        android:id="@+id/switch_dark"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
 
-                    <TextView
-                        style="@style/text"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:id="@+id/tv_dark"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_dark"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                    <TextView-->
+<!--                        style="@style/text"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:id="@+id/tv_dark"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_dark"-->
+<!--                        />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
                 <!-- dark mode -->
 
-                <!-- landscape mode -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    app:layout_constraintTop_toBottomOf="@id/cl_dark_container"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/cl_land_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/setting_item_height">
+                <!-- orientation mode -->
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/cl_dark_container"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:id="@+id/cl_land_container"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/setting_item_height">-->
 
-                    <TextView
-                        android:layout_marginStart="@dimen/setting_sub_title_margin"
-                        android:gravity="center"
-                        style="@style/text"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:id="@+id/tv_land_mode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_land_title" />
-                    <TextView
-                        style="@style/text"
-                        android:id="@+id/tv_land"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_port"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/switch_land" />
+<!--                    <TextView-->
+<!--                        android:layout_marginStart="@dimen/setting_sub_title_margin"-->
+<!--                        android:gravity="center"-->
+<!--                        style="@style/text"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:id="@+id/tv_orientation_mode"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_orientation_title" />-->
+<!--                    <TextView-->
+<!--                        style="@style/text"-->
+<!--                        android:id="@+id/tv_land"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_port"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/switch_orientation" />-->
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tv_port"
-                        android:id="@+id/switch_land"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+<!--                    <androidx.appcompat.widget.SwitchCompat-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/tv_port"-->
+<!--                        android:id="@+id/switch_orientation"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
 
-                    <TextView
-                        style="@style/text"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:id="@+id/tv_port"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_land"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- landscape mode -->
-
-
+<!--                    <TextView-->
+<!--                        style="@style/text"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        android:id="@+id/tv_port"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/setting_land"-->
+<!--                        />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <!-- orientation mode -->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

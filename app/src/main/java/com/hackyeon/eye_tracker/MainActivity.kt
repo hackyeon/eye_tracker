@@ -1,8 +1,11 @@
 package com.hackyeon.eye_tracker
 
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -15,6 +18,7 @@ import com.hackyeon.eye_tracker.camera.CameraConnection
 import com.hackyeon.eye_tracker.databinding.ActivityMainBinding
 import com.hackyeon.eye_tracker.util.HLog
 import com.hackyeon.eye_tracker.util.extension.setFullScreen
+import com.hackyeon.eye_tracker.util.showAlert
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -50,7 +54,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * 권한 확인
      * 권한이 있는경우 카메라를 바인딩한다
-     * todo 연속 권한 거절 관련
      */
     private fun checkPermission() {
         if(hasPermissions()) {
@@ -80,8 +83,11 @@ class MainActivity : AppCompatActivity() {
             if(permissionGranted) {
                 bindCamera()
             } else {
-                // todo 권한 거절
-                Toast.makeText(this, "권한이 없으면 앱을 사용할수 없음", Toast.LENGTH_LONG).show()
+                showAlert(R.string.permission_info) {
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(
+                        Uri.parse("package:$packageName")).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                }
             }
         }
 

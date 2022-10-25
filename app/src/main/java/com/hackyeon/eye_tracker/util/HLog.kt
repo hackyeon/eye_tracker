@@ -4,7 +4,7 @@ import android.util.Log
 
 object HLog {
 
-    private val DEBUG = false
+    private val DEBUG = true
     private val TAG = "HLog"
 
     fun d(msg: Any?) {

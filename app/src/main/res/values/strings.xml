@@ -2,14 +2,14 @@
     <string name="app_name">eye_tracker</string>
 
     <!-- prepare -->
+    <string name="permission_info">카메라 권한이 없으면 앱을 이용할 수 없습니다.</string>
+    <string name="clear_data_info">녹화 정보를 초기화하고 처음으로 돌아갑니다.</string>
     <string name="input_file_name">파일명을 입력하세요</string>
     <string name="info_head_position">머리를 해당\n영역에 최대한\n맞춰주세요</string>
     <string name="info_icon_first">시작 이후, \' </string>
     <string name="info_icon_second"> \' 모양이 나옵니다.</string>
     <string name="info_icon_third">머리는 최대한 고정하고, 눈으로 따라가세요</string>
     <string name="start">START</string>
-
-
     <!-- setting -->
     <string name="setting_title">설정</string>
     <!-- setting calibration -->
@@ -28,9 +28,13 @@
     <!-- setting land -->
     <string name="setting_land">가로</string>
     <string name="setting_port">세로</string>
-    <string name="setting_land_title">방향</string>
+    <string name="setting_orientation_title">방향</string>
 
     <!-- upload -->
     <string name="upload_clear_home">초기화면으로 돌아가기</string>
+
+    <!-- alert -->
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
 
 </resources>

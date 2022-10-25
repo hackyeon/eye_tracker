@@ -39,3 +39,9 @@ navigation view 이슈
 animation 완료
 
 prepare state / 데이터 초기화
+
+2022-10-25
+
+설정UI / calibration 간격 / 애니메이션 속도
+
+전화 연속권한 거절 / Alert
