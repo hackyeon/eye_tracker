@@ -11,4 +11,9 @@ interface AnimationListener {
      * 애니메이션 종료
      */
     fun onAnimationFinished()
+
+    /**
+     * 애니메이션 속도를 가져온다
+     */
+    fun getAnimationSpeed(): Int?
 }

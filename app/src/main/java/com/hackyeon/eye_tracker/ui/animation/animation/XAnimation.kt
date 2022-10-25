@@ -9,8 +9,9 @@ import kotlin.math.hypot
 class XAnimation(
     container: View,
     icon: ImageView,
+    speed: Int,
     private val callback: () -> Unit
-): BaseAnimation(container, icon) {
+): BaseAnimation(container, icon, speed) {
     /**
      * 아이콘 좌우 위치 확인용
      */

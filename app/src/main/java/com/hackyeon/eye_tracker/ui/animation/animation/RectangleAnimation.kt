@@ -9,8 +9,9 @@ import androidx.core.animation.doOnStart
 class RectangleAnimation(
     container: View,
     private val icon: ImageView,
+    speed: Int,
     private val callback: () -> Unit
-): BaseAnimation(container, icon) {
+): BaseAnimation(container, icon, speed) {
     // override
     override fun start() = lToR().start()
     override fun lToR(): ValueAnimator = super.lToR().apply {

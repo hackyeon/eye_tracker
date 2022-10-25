@@ -6,17 +6,18 @@ import android.widget.ImageView
 class AnimationController(
     container: View,
     icon: ImageView,
+    speed: Int,
     callback: () -> Unit
 ) {
     fun start() = rectangleAnimation.start()
 
-    private val rectangleAnimation = RectangleAnimation(container, icon) {
+    private val rectangleAnimation = RectangleAnimation(container, icon, speed) {
         zigZagAnimation.start()
     }
-    private val zigZagAnimation = ZigZagAnimation(container, icon) {
+    private val zigZagAnimation = ZigZagAnimation(container, icon, speed) {
         xAnimation.start()
     }
-    private val xAnimation = XAnimation(container, icon) {
+    private val xAnimation = XAnimation(container, icon, speed) {
         callback()
     }
 

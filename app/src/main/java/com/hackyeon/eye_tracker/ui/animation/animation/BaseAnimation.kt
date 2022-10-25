@@ -11,7 +11,8 @@ import kotlin.math.hypot
 
 abstract class BaseAnimation(
     private val container: View,
-    private val icon: ImageView
+    private val icon: ImageView,
+    private val speed: Int
 ) {
     // scope
     private val animationJob = Job()
@@ -72,21 +73,21 @@ abstract class BaseAnimation(
      */
     private fun createDiagonalAnimation(): ValueAnimator = createDefaultAnimation().apply {
         addUpdateListener(diagonalAnimation)
-        duration = hypot(container.measuredWidth.toFloat(), container.measuredHeight.toFloat()).toLong()
+        duration = (hypot(container.measuredWidth.toFloat(), container.measuredHeight.toFloat()) * speed).toLong()
     }
     /**
      * 가로 이동
      */
     private fun createHorizontalAnimation(): ValueAnimator = createDefaultAnimation().apply {
         addUpdateListener(horizontalAnimation)
-        duration = container.measuredWidth.toLong()
+        duration = (container.measuredWidth * speed).toLong()
     }
     /**
      * 세로 이동
      */
     private fun createVerticalAnimation(): ValueAnimator = createDefaultAnimation().apply {
         addUpdateListener(verticalAnimation)
-        duration = container.measuredHeight.toLong()
+        duration = (container.measuredHeight * speed).toLong()
     }
 
     /**

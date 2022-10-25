@@ -9,8 +9,9 @@ import androidx.core.animation.doOnStart
 class ZigZagAnimation(
     private val container: View,
     icon: ImageView,
+    private val speed: Int,
     private val callback: () -> Unit
-): BaseAnimation(container, icon) {
+): BaseAnimation(container, icon, speed) {
     /**
      * 가로이동 시작지점
      */
@@ -33,7 +34,7 @@ class ZigZagAnimation(
             if(currentIndex % 2 == 0) bToT().start()
             else tToB().start()
         }
-        duration = container.measuredWidth.toLong() / startValues.size
+        duration = (container.measuredWidth.toLong() / startValues.size) * speed
     }
     override fun tToB(): ValueAnimator = super.tToB().apply {
         onEndNext { lToR().start() }

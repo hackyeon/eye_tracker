@@ -35,11 +35,11 @@ class AnimationFragment: BaseRecordingFragment() {
         override fun onReady() {
             CameraConnection.startRecording(requireActivity())
         }
-
         override fun onAnimationFinished() {
             CameraConnection.stopRecording()
             findNavController().navigate(AnimationFragmentDirections.toUpload())
         }
+        override fun getAnimationSpeed(): Int? = viewModel.animationSpeed.value
     }
 
 }

@@ -47,7 +47,8 @@ class AnimationView @JvmOverloads constructor(context: Context, attrs: Attribute
     }
 
     private fun setController() {
-        controller = AnimationController(this, icon) {
+        val speed = mListener?.getAnimationSpeed()?: AnimationConfig.DEFAULT_ANIMATION_SPEED
+        controller = AnimationController(this, icon, speed) {
             mListener?.onAnimationFinished()
         }
     }

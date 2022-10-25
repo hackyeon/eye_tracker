@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.hackyeon.eye_tracker.MainViewModel
 import com.hackyeon.eye_tracker.ui.calibration.data.CalibrationMode
 import com.hackyeon.eye_tracker.databinding.SettingDialogFragmentBinding
+import com.hackyeon.eye_tracker.ui.animation.AnimationConfig
 import com.hackyeon.eye_tracker.ui.calibration.CalibrationConfig
 
 class SettingDialogFragment: DialogFragment() {
@@ -40,17 +41,23 @@ class SettingDialogFragment: DialogFragment() {
             val value = ((it + 100) / 1000).toInt()
             if(binding.npCalibrationInterval.value != value) binding.npCalibrationInterval.value = value
         }
+        viewModel.animationSpeed.observe(viewLifecycleOwner) {
+            if(binding.npAnimationSpeed.value != it) binding.npAnimationSpeed.value = it
+        }
     }
 
     private fun regListener() {
         binding.switchCalibration.setOnCheckedChangeListener { _, isChecked -> viewModel.setCalibrationMode(isChecked) }
         binding.npCalibrationInterval.setOnValueChangedListener { _, _, newVal -> viewModel.setCalibrationInterval(newVal) }
+        binding.npAnimationSpeed.setOnValueChangedListener { _, _, newVal -> viewModel.setAnimationSpeed(newVal) }
     }
 
     private fun bindNumberPicker() {
         binding.npCalibrationInterval.maxValue = CalibrationConfig.CALIBRATION_DELAY_MAX
         binding.npCalibrationInterval.minValue = CalibrationConfig.CALIBRATION_DELAY_MIN
 
+        binding.npAnimationSpeed.maxValue = AnimationConfig.ANIMATION_SPEED_MAX
+        binding.npAnimationSpeed.minValue = AnimationConfig.ANIMATION_SPEED_MIN
     }
 
     override fun onDestroyView() {

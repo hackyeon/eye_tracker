@@ -24,10 +24,16 @@ class MainViewModel: ViewModel() {
         val result = (value * 1000 - 100).toLong()
         _calibrationInterval.postValue(result)
     }
+    private val _animationSpeed = MutableLiveData<Int>(repository.getAnimationSpeed())
+    val animationSpeed: LiveData<Int> = _animationSpeed
+    fun setAnimationSpeed(value: Int) = _animationSpeed.postValue(value)
+
     fun saveSetting() {
         repository.setCalibrationMode(calibrationMode.value)
         repository.setCalibrationInterval(calibrationInterval.value)
+        repository.setAnimationSpeed(animationSpeed.value)
     }
+
 
     // next recording
     enum class NextRecording { CALIBRATION, ANIMATION; }
